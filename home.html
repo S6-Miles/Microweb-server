@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="./Picture/book.ico">
+  <title>开放图书系统</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #c2b5b9, #397f91);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+      animation: gradient 15s ease infinite;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-top: 50px;
+      font-size: 50px;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 80%;
+      margin-top: 50px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+      background-color: #8da38e;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      font-size: 20px;
+      background-color: #7eb9db;
+      color: rgb(0, 0, 0);
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #3e8e41;
+    }
+
+    a {
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="calculate" style="float:left;margin-left:15px;">加法计算</button>
+  <button id="logout-button" style="float:right;margin-right:15px;">退出</button><br>
+  <h1>欢迎进入开放图书系统</h1>
+  <style>
+    /* #logout-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    } */
+
+    table {
+      width: 80%;
+      /* 设置表格宽度为100% */
+      border-collapse: collapse;
+      /* 合并边框 */
+    }
+
+    th {
+      font-size: 25px;
+      text-align: center;
+      /* 设置单元格文本水平居中 */
+      vertical-align: middle;
+      /* 设置单元格文本垂直居中 */
+    }
+
+    td {
+      font-size: 20px;
+      /* 设置表格单元格字体大小为16像素 */
+      padding: 5px;
+      /* 设置单元格内边距为5像素 */
+      border: 1px solid #ccc;
+      /* 设置单元格边框为1像素实线，灰色 */
+      text-align: center;
+      /* 设置单元格文本水平居中 */
+      vertical-align: middle;
+      /* 设置单元格文本垂直居中 */
+      padding: 5px;
+      border: 1px solid #ccc;
+      white-space: pre-line;
+      /* 在标记处插入换行符，保留其他空格和换行符 */
+    }
+
+    td:first-child {
+      width: 15%;
+      /* 设置第一列宽度为30% */
+    }
+
+    img {
+      width: 80%;
+      height: auto;
+    }
+  </style>
+  <script>
+    document.getElementById("logout-button").addEventListener("click", function () {
+      window.location.href = "index.html";
+    });document.getElementById("calculate").addEventListener("click", function () {
+      window.location.href = "add.html";
+    });
+  </script>
+
+  <table>
+    <thead>
+      <tr>
+        <th>封面</th>
+        <th>书名</th>
+        <th>作者</th>
+        <th>ISBN</th>
+        <th>出版社</th>
+        <th>类别</th>
+        <th>状态</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="Picture/huozhe.jpg" alt="《活着》的封面"></td>
+        <td>《活着》</td>
+        <td>余华</td>
+        <td>9787530215593</td>
+        <td>北京十月文艺出版社</td>
+        <td>文学小说</td>
+        <td>借出</td>
+      </tr>
+      <tr>
+        <td><img src="Picture/hongloumeng.jpg" alt="《活着》的封面"></td>
+        <td>《红楼梦》</td>
+        <td>曹雪芹 著
+          无名氏 续</td>
+        <td>9787533925711</td>
+        <td>人民文学出版社</td>
+        <td>古典文学</td>
+        <td>可借阅</td>
+      </tr>
+      <tr>
+        <td><img src="Picture/suanfatujie.jpg" alt="《活着》的封面"></td>
+        <td>《算法图解》</td>
+        <td>[美] Aditya Bhargava</td>
+        <td>9787115447630</td>
+        <td>人民邮电出版社</td>
+        <td>计算机技术</td>
+        <td>在库</td>
+      </tr>
+      <tr>
+        <td><img src="Picture/cPrimerPlus.jpg" alt="《活着》的封面"></td>
+        <td>C Primer Plus（第6版）
+          中文版</td>
+        <td>[美] 史蒂芬·普拉达
+          （Stephen Prata）</td>
+        <td>9787115521637</td>
+        <td>人民邮电出版社</td>
+        <td>计算机技术</td>
+        <td>在库</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align: center;">
+    <a href="#" class="button">添加新书籍</a>
+  </div>
+
+</body>
+
+</html>

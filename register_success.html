@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register success</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #c2b5b9, #397f91);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            font-family: "宋体", STSongti, serif;
+            color: #333;
+            font-size: 35px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            background-color: rgb(198, 217, 198);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        span {
+            font-family: "宋体", STSongti, serif;
+            color: #000000;
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 25px;
+        }
+
+        .center {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var countDown = 5;
+            var countdownElement = document.getElementById('countdown');
+
+            var intervalId = setInterval(function () {
+                countDown--;
+
+                if (countDown <= 0) {
+                    clearInterval(intervalId);
+                    window.location.href = 'index.html';
+                }
+
+                countdownElement.innerHTML = countDown;
+            }, 1000);
+        };
+    </script>
+</head>
+
+<body>
+    <div class="center" id="register-form" style="height:30%;width:35%;">
+        <form>
+            <h1 class="error">注册成功</h1>
+            <p class="center"><span id="countdown">5</span> S</p>
+            <p class="center">5秒后将自动返回主页</p>
+            <hr><em>The Book Web server</em>
+        </form>
+    </div>
+</body>
+
+</html>

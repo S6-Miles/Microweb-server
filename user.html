@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./Picture/book.ico">
+    <title>用户注册</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #c2b5b9, #397f91);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            background-color: rgb(195, 202, 195);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: "宋体", STSongti, serif;
+            color: #333;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            height: 40px;
+            border: none;
+            font-size: 20px;
+            background-color: rgb(235, 243, 235);
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text1"] {
+            width: 70%;
+            height: 40px;
+            background-color: rgb(235, 243, 235);
+            border: none;
+            font-size: 20px;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 30%;
+            height: 51px;
+            background-color: rgb(235, 243, 235);
+            border: none;
+            font-size: 20px;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            height: 50px;
+            font-size: 25px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        label {
+            font-size: 25px;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-row select {
+            margin-left: 10px;
+            flex: 1;
+        }
+
+        .center {
+            margin: 0 auto;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center" id="register-form" style="height:30%;width:35%;">
+        <form action="user.html" method="post" id="register" onsubmit="return validateForm()">
+            <h1><img src="./Picture/user.ico" alt="=" height="35px" width="35px">用户注册</h1><br>
+
+            <label for="register-username">用户名：</label>
+            <input type="text" name="username">
+
+            <label for="register-password">密码：</label>
+            <input type="password" name="password">
+
+            <label for="password-confirm">确认密码：</label>
+            <input type="password" name="password-confirm">
+
+            <label for="email">电子邮件：</label>
+            <div class="form-row">
+                <input type="text1" name="emailname">
+                <select id="email_suffix" name="email_suffix">
+                    <option value="@gmail.com">@gmail.com</option>
+                    <option value="@hotmail.com">@hotmail.com</option>
+                    <option value="@outlook.com">@outlook.com</option>
+                    <option value="@yahoo.com">@yahoo.com</option>
+                    <option value="@163.com">@163.com</option>
+                    <option value="@126.com">@126.com</option>
+                    <option value="@qq.com">@qq.com</option>
+                    <option value="@sina.com">@sina.com</option>
+                </select>
+            </div><br>
+            <div class="error" id="register-error"></div>
+
+            <input type="submit" value="注册">
+            <div class="links">
+                <a href="index.html">返回登陆</a>
+                <a href="#">联系我们</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.forms["register"]["username"].value;
+            var password = document.forms["register"]["password"].value;
+            var password_confirm = document.forms["register"]["password-confirm"].value;
+            var emailname = document.forms["register"]["emailname"].value;
+
+            if (username == "" && password == "" && password_confirm == "" && emailname == "") {
+                document.getElementById("register-error").innerHTML = "请输入用户注册信息！";
+                return false; // 阻止提交
+            }
+            else if (username == "") {
+                document.getElementById("register-error").innerHTML = "请输入用户名！";
+                return false; // 阻止提交
+            }
+            else if (password == "") {
+                document.getElementById("register-error").innerHTML = "请输入密码！";
+                return false; // 阻止提交
+            } else if (password_confirm == "") {
+                document.getElementById("register-error").innerHTML = "请再次输入密码！";
+                return false; // 阻止提交
+            } else if (emailname == "") {
+                document.getElementById("register-error").innerHTML = "请输入邮箱名！";
+                return false; // 阻止提交
+            } else if (password != password_confirm) {
+                document.getElementById("register-error").innerHTML = "两次密码不一致！";
+                return false; // 阻止提交
+            }
+        }
+    </script>
+
+</body>
+
+</html>

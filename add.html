@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>加法计算</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #c2b5b9, #397f91);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            height: 40px;
+            background-color: rgb(235, 243, 235);
+            border: none;
+            font-size: 20px;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        p,
+        span {
+            font-size: 25px;
+        }
+
+        .userformat {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            background-color: rgb(195, 202, 195);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .center {
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function calculate() {
+            // 获取输入的两个数字
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+
+            // 判断输入是否合法
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("请输入数字！");
+                return;
+            }
+
+            // 向服务器发送get请求
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/calculate/add?" + num1 + "&" + num2, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 在页面上显示结果
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="center" style="height:30%;width:60%;">
+        <div class="userformat">
+            <h1>加法计算</h1>
+            <div class="form-row">
+                <input type="text" id="num1" style="width:45%;float:left;">
+                <p style="width:50px;height: 50px;margin-left:20px;"> + </p>
+                <input type="text" id="num2" style="width:45%;float:right;">
+            </div>
+            <p>结果：<span id="result"></span></p>
+            <button style="font-size: 20px;" onclick="calculate()">计算</button>
+            <div class="links">
+                <a href="index.html">返回主页</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

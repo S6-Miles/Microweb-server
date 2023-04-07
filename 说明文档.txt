@@ -1,0 +1,2 @@
+服务器程序编译命令：gcc -g -o sever attached_sever.c book_sever.c csapp.c wrap_error.c wrap_process.c wrap_signal.c -lpthread -l sqlite3
+可执行文件：sever
